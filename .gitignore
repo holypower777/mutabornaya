@@ -1,0 +1,14 @@
+vendor
+.idea
+.vscode
+*.env
+serviceAccounts.json
+!mode.env
+
+.DS_STORE
+
+coverage.out
+coverage.html
+
+*.test
+*.sql
