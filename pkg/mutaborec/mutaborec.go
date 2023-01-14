@@ -13,7 +13,7 @@ type Mutaborec struct {
 }
 
 func NewBot(db *database.Database, botToken string) (*Mutaborec, error) {
-	bot, err := telego.NewBot(botToken, telego.WithDefaultDebugLogger())
+	bot, err := telego.NewBot(botToken)
 	if err != nil {
 		return nil, err
 	}
@@ -40,6 +40,9 @@ func (m *Mutaborec) Start() {
 				fmt.Println("left")
 			}
 		case update.Message != nil:
+			if update.Message.Sticker != nil {
+				m.handleSticker(update.Message)
+			}
 		}
 	}
 }
